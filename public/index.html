@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trading Signals Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="dashboard">
+    <!-- Market Info -->
+    <div class="market-info">
+      <div>
+        <span>Market:</span>
+        <h2 id="market">1HZ100V</h2>
+      </div>
+      <div>
+        <span>Status:</span>
+        <h2 id="status" class="status-active">Connected</h2>
+      </div>
+    </div>
+
+    <!-- Active Signals & Stats -->
+    <div class="cards" id="active-signals">
+      <!-- Active signals will be added here by JavaScript -->
+      <div class="no-signals">Waiting for signals...</div>
+    </div>
+
+    <!-- Recent Trades -->
+    <div class="trades">
+      <h3>Recent Trades</h3>
+      <div id="trade-results">
+        <table>
+          <thead>
+            <tr>
+              <th>Signals</th>
+              <th>Time</th>
+              <th>Result</th>
+              <th>Price</th>
+            </tr>
+          </thead>
+          <tbody id="trades-body">
+            <tr class="no-trades">
+              <td colspan="4">No trades completed yet</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <footer>© 2023 Trading Signals Dashboard | Real-time market analysis</footer>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

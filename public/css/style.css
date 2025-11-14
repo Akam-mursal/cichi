@@ -1,0 +1,233 @@
+/* Global Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #1e1e2f;
+  color: #f0f0f0;
+  padding: 20px;
+  line-height: 1.6;
+}
+
+h2, h3, h4 {
+  margin-bottom: 10px;
+  color: #00ccff;
+}
+
+/* Dashboard Container */
+.dashboard {
+  max-width: 1200px;
+  margin: 0 auto;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Market Info */
+.market-info {
+  background-color: #2a2a3d;
+  padding: 20px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.market-info div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.market-info span {
+  font-size: 14px;
+  color: #aaa;
+  margin-bottom: 4px;
+}
+
+.market-info h2 {
+  font-size: 24px;
+  color: #00ff99;
+  margin: 0;
+}
+
+/* Status Styles */
+.status-active {
+  color: #00ff99 !important;
+}
+
+.status-inactive {
+  color: #ff5555 !important;
+}
+
+/* Signal Cards */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.card {
+  background-color: #2a2a3d;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  transition: transform 0.2s;
+  text-align: center;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+}
+
+.card h3 {
+  margin-bottom: 10px;
+  color: #00ccff;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.card p {
+  font-size: 18px;
+  margin-bottom: 0;
+  color: #fff;
+}
+
+/* Recent Trades Table */
+.trades {
+  background-color: #2a2a3d;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  flex: 1;
+  margin-bottom: 20px;
+}
+
+.trades h3 {
+  margin-bottom: 15px;
+  color: #00ccff;
+  font-size: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+th, td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #3a3a4d;
+}
+
+th {
+  background-color: #33334d;
+  color: #fff;
+  font-weight: 500;
+  text-align: center;
+}
+
+tr:nth-child(even) {
+  background-color: #272736;
+}
+
+.win {
+  color: #00ff99;
+  font-weight: bold;
+}
+
+.loss {
+  color: #ff5555;
+  font-weight: bold;
+}
+
+/* No signals/trades message */
+.no-signals, .no-trades {
+  text-align: center;
+  color: #888;
+  padding: 20px;
+  grid-column: 1 / -1;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  margin-top: auto;
+  font-size: 14px;
+  color: #888;
+  padding: 20px 0;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.card, tr {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Status animation */
+@keyframes pulse {
+  0% { opacity: 0.6; }
+  50% { opacity: 1; }
+  100% { opacity: 0.6; }
+}
+
+.status-active {
+  animation: pulse 2s infinite;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .market-info {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+  
+  .cards {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  th, td {
+    padding: 10px 8px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 10px;
+  }
+  
+  .cards {
+    grid-template-columns: 1fr;
+  }
+  
+  .market-info h2 {
+    font-size: 20px;
+  }
+  
+  .card {
+    padding: 15px;
+  }
+  
+  .trades {
+    padding: 15px;
+  }
+  
+  th, td {
+    padding: 8px 6px;
+    font-size: 13px;
+  }
+}
