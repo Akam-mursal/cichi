@@ -57,6 +57,13 @@ h2, h3, h4 {
   margin: 0;
 }
 
+/* Header Icon */
+.header-icon {
+  width: 48px;
+  height: 48px;
+  opacity: 0.7;
+}
+
 /* Status Styles */
 .status-active {
   color: #00ff99 !important;
@@ -78,13 +85,15 @@ h2, h3, h4 {
   background-color: #2a2a3d;
   padding: 20px;
   border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-  transition: transform 0.2s;
+  border: 1px solid #3a3a4d;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  transition: transform 0.2s, box-shadow 0.2s;
   text-align: center;
 }
 
 .card:hover {
-  transform: translateY(-3px);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0,0,0,0.5);
 }
 
 .card h3 {
@@ -102,7 +111,6 @@ h2, h3, h4 {
 
 /* Recent Trades Table */
 .trades {
-  background-color: #2a2a3d;
   border-radius: 12px;
   padding: 20px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.3);
@@ -112,27 +120,47 @@ h2, h3, h4 {
 
 .trades h3 {
   margin-bottom: 15px;
-  color: #00ccff;
+  color: #00ff99;
   font-size: 20px;
 }
 
 table {
   width: 100%;
+  table-layout: fixed; /* This is key to prevent columns from resizing based on content */
   border-collapse: collapse;
   margin-top: 10px;
 }
 
 th, td {
   padding: 12px 15px;
-  text-align: left;
   border-bottom: 1px solid #3a3a4d;
+  text-align: center; /* Center align all table content for consistency */
+  white-space: nowrap; /* Prevent text from wrapping to a new line */
+  overflow: hidden;
+  text-overflow: ellipsis; /* Add '...' if content is too long */
 }
 
 th {
   background-color: #33334d;
   color: #fff;
   font-weight: 500;
-  text-align: center;
+}
+
+/* Assign specific widths to each column */
+th:nth-child(1), td:nth-child(1) { /* Signals */
+  width: 20%;
+}
+
+th:nth-child(2), td:nth-child(2) { /* Time */
+  width: 20%;
+}
+
+th:nth-child(3), td:nth-child(3) { /* Result */
+  width: 20%;
+}
+
+th:nth-child(4), td:nth-child(4) { /* Price */
+  width: 40%;
 }
 
 tr:nth-child(even) {
@@ -161,15 +189,33 @@ tr:nth-child(even) {
 footer {
   text-align: center;
   margin-top: auto;
-  font-size: 14px;
-  color: #888;
   padding: 20px 0;
+  font-style: italic;
+  font-size: 15px;
+  color: #a0a0b0;
+  transition: opacity 0.5s ease-in-out;
 }
 
 /* Animations */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+/* New Signal Animation */
+@keyframes signal-glow {
+  0% {
+    background-color: #2a2a3d;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4), 0 0 0px #00ccff;
+  }
+  50% {
+    background-color: #004c66;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.5), 0 0 25px #00ccff;
+  }
+  100% {
+    background-color: #2a2a3d;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4), 0 0 0px #00ccff;
+  }
 }
 
 .card, tr {
@@ -185,6 +231,35 @@ footer {
 
 .status-active {
   animation: pulse 2s infinite;
+}
+
+.card.new-signal {
+  animation: signal-glow 1.2s ease-in-out 2, fadeIn 0.3s ease-out; /* Run glow animation twice */
+}
+
+/* Expired Signal Styles */
+.card.signal-expired {
+  transform: translateY(0); /* Reset hover effect */
+  transition: background-color 0.5s ease-in-out, border-color 0.5s ease-in-out;
+}
+
+.card.signal-expired h3,
+.card.signal-expired p,
+.card.signal-expired div {
+  opacity: 0.7; /* Fade out the text a bit */
+}
+
+.card.expired-purple {
+  background-color: #4a4a6a; /* Soft purple */
+  border-color: #6a6aac;
+}
+.card.expired-teal {
+  background-color: #3a6b5f; /* Muted teal */
+  border-color: #5aa08d;
+}
+.card.expired-amber {
+  background-color: #7a633b; /* Warm amber */
+  border-color: #a0835a;
 }
 
 /* Responsive adjustments */
